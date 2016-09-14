@@ -1,0 +1,25 @@
+<project name="MyProject" default="all" basedir=".">
+	<target name="all" depends="buildx86,buildx64,cppcheck"/>
+	<target name="cppcheck">
+		<exec failonerror="true" executable="cmd.exe">
+			<redirector error="./cppcheck-result.xml" alwayslog="true"/>
+			<arg line="/c"/>
+			<arg line="build.cmd"/>
+			<arg line="cppcheck"/>
+		</exec>
+	</target>	
+	<target name="buildx86">
+		<exec failonerror="true" executable="cmd.exe">
+			<arg line="/c"/>
+			<arg line="build.cmd"/>
+			<arg line="x86"/>
+		</exec>
+	</target>
+	<target name="buildx64">
+		<exec failonerror="true" executable="cmd.exe">
+			<arg line="/c"/>
+			<arg line="build.cmd"/>
+			<arg line="x64"/>
+		</exec>
+	</target>
+</project>
