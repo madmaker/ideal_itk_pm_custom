@@ -20,6 +20,8 @@
 #include "pm8_get_document_type2_value.hxx"
 #include "pm8_get_mat_string_nx_value.hxx"
 #include "pm8_properties.hxx"
+#include "pm8_get_TypeOfPart2.hxx"
+#include "pm8_get_TypeOfPart2_EN.hxx"
 
 /**
  *
@@ -68,6 +70,14 @@ int pm8_properties_helper_register_properties(int *decision, va_list args) {
 		erc = METHOD_register_prop_method("Pm8_CompanyPartRevision",
 				"pm8_MatStringNX", PROP_ask_value_string_msg,
 				pm8_get_mat_string_nx_value, NULL, &meth0);
+
+		erc = METHOD_register_prop_method("Part",
+				"pm8_TypeOfPart2", PROP_ask_value_string_msg,
+				pm8_get_TypeOfPart2, NULL, &meth0);
+
+		erc = METHOD_register_prop_method("Part",
+				"pm8_TypeOfPart2_EN", PROP_ask_value_string_msg,
+				pm8_get_TypeOfPart2_EN, NULL, &meth0);
 
 	} catch (...) {
 		return sisw::process_error(true, true, false);
